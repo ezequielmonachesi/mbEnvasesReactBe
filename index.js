@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import morgan from "morgan";
+import path from "path";
 
 // tomar puerto
 //crear una instancia de express
@@ -13,6 +15,9 @@ app.listen(app.get("port"), () => {
 //middleware: funciones que se ejecutan antes de las rutas
 app.use(cors()); //permite conexiones remotas
 app.use(express.json()); // puedo tomar del objeto request de  datos formato json.
-
+app.use(morgan("dev")); //muestra status de las solicitudes solo en desarrollo
+console.log(path.join(__dirname, "/public"));
+app.use(express.static(path.join(__dirname, "/public"))); //nos ayuda a mostrar archivo index.js staticos en localhost
+//http://localhost:4000
 
 //rutas
