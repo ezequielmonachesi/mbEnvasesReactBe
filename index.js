@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 // tomar puerto
 //crear una instancia de express
@@ -9,6 +10,9 @@ app.listen(app.get("port"), () => {
   console.log("Estoy en el puerto " + app.get("port"));
 });
 
-//middleware
+//middleware: funciones que se ejecutan antes de las rutas
+app.use(cors()); //permite conexiones remotas
+app.use(express.json()); // puedo tomar del objeto request de  datos formato json.
+
 
 //rutas
